@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>ReSplitter - Translator</title>
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+	<link rel="icon" href="https://img.icons8.com/ios-filled/50/ffffff/split-horizontal.png">
+	<style>
+		:root {
+			--gray-dark: #232323;
+			--gray-line: #2d2d2d;
+		}
+		body {
+			background: #000;
+			color: #fff;
+			font-family: 'Montserrat', Arial, sans-serif;
+			margin: 0;
+			padding: 0;
+		}
+		p {
+			margin-top: 4px;
+			margin-bottom: 4px;
+			padding-top: 0;
+			padding-bottom: 0;
+		}
+		header {
+			display: flex;
+			align-items: center;
+			gap: 12px;
+			padding: 32px 0 1px 0;
+			justify-content: center;
+			background: #000;
+		}
+		header img {
+			width: 48px;
+			filter: brightness(0) invert(1) drop-shadow(0 0 2px var(--gray-dark));
+		}
+		h1 {
+			font-size: 2.5rem;
+			margin: 0;
+			font-weight: 700;
+			color: #fff;
+			letter-spacing: 1px;
+			text-shadow: 0 0 8px #23232333;
+		}
+		h2 {
+			color: #fff;
+			margin-bottom: 18px;
+			font-weight: 600;
+		}
+		.divider {
+			width: 100%;
+			border: none;
+			border-top: 1.5px solid var(--gray-line);
+			margin: 48px 0 32px 0;
+		}
+		.divider-small {
+			width: 100%;
+			border: none;
+			padding: 24px 0 24px 0;
+			border-bottom: 1.5px solid var(--gray-line);
+			margin: 1x 0 1px 0;
+		}
+
+		.divider-xsmall {
+			width: 100%;
+			border: none;
+			padding: 12px 0 1px 0;
+			border-bottom: 1.5px solid var(--gray-line);
+			margin: 12px 0 2rem 0;
+		}
+
+		.features {
+			display: flex;
+			flex-direction: column;
+			gap: 0;
+		}
+		.feature {
+			display: flex;
+			align-items: center;
+			justify-content: flex-start;
+			padding: 32px 0 24px 0;
+			border-bottom: 1.5px solid var(--gray-line);
+			gap: 0;
+		}
+		.feature-content {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			flex: 1 1 0;
+			max-width: 340px;
+			margin-left: 0;
+			margin-right: 0;
+			text-align: center;
+			padding-left: 32px;
+		}
+		.feature:last-child {
+			border-bottom: none;
+		}
+		.feature-content {
+			flex: 1 1 0;
+		}
+		.feature-img {
+			width: 500px;
+			height: 220px;
+			object-fit: contain;
+			border-radius: 16px;
+			background: #111;
+			margin-left: auto;
+			margin-bottom: 1.5rem;
+			margin-top: 1.5rem;
+			flex-shrink: 0;
+			display: block;
+			box-shadow: 0 2px 16px #23232344;
+		}
+		.results {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 32px;
+			justify-content: space-between;
+		}
+		.feature, .result {
+			flex: 1 1 220px;
+			min-width: 220px;
+			background: transparent;
+			border-radius: 0;
+			padding: 0 8px 0 0;
+			text-align: center;
+		}
+		.feature-icon {
+			width: 48px;
+			height: 48px;
+			padding-top: 18px;
+			margin-bottom: 4px;
+			filter: brightness(0) invert(1) drop-shadow(0 0 2px var(--gray-dark));
+		}
+		.result-icon {
+			width: 40px;
+			height: 40px;
+			margin-bottom: 10px;
+			filter: brightness(0) invert(1) drop-shadow(0 0 2px var(--gray-dark));
+		}
+		.result-icon {
+			width: 40px;
+			height: 40px;
+			margin-bottom: 10px;
+		}
+		.preview {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			gap: 24px;
+		}
+		.preview-img {
+			width: 90%;
+			max-width: 600px;
+			border-radius: 10px;
+			box-shadow: 0 2px 16px #23232344;
+			border: 1.5px solid var(--gray-line);
+		}
+		a.button {
+			display: inline-block;
+			margin-top: 24px;
+			padding: 12px 32px;
+			background: var(--gray-dark);
+			color: #fff;
+			font-weight: 700;
+			border-radius: 8px;
+			text-decoration: none;
+			font-size: 1.1rem;
+			box-shadow: 0 2px 8px #23232333;
+			border: 1.5px solid var(--gray-line);
+			transition: background 0.2s, color 0.2s;
+		}
+		a.button:hover {
+			background: #fff;
+			color: #232323;
+		}
+		@media (max-width: 700px) {
+			.features, .results {
+				flex-direction: column;
+				gap: 18px;
+			}
+		}
+	</style>
+</head>
+<body>
+	<header>
+    <img src="logo.png" alt="ReSplitter logo" style="width:340px; height:auto;">
+	</header>
+	<main style="max-width:900px;margin:0 auto;padding:0 16px;">
+		<section style="margin-top:1.5em; margin-bottom:0px;">
+			<div class="preview">
+                <p style="font-family: 'Montserrat', Arial, sans-serif; font-weight: bold; margin:1px; padding: 0; font-size: 2rem;">
+                    Translate faster, waste less time & tokens.
+                </p>
+				<img class="preview-img" src="ad image.png" alt="ReSplitter Preview" style="margin:1px; padding: 0;">
+				<p style="margin:1px; padding: 0;">(The results in the image are a real case, the folder used only contains 2,260 translatable lines)</p>
+			</div>
+		</section>
+		<hr class="divider-xsmall">
+		<section>
+			<div class="results">
+				<div class="result">
+					<img class="result-icon" src="https://img.icons8.com/?size=100&id=122581&format=png&color=FFFFFF">
+					<h3>Placeholders are Safe</h3>
+					<p>Placeholders, Color Codes/MiniMessage respected.<br>No more worries about broken lines.</p>
+				</div>
+				<div class="result">
+					<img class="result-icon" src="https://img.icons8.com/?size=100&id=ajkz1dk1AfEe&format=png&color=FFFFFF">
+					<h3>Well Documented</h3>
+					<p>All the program features are<br>explained on our documentation<br>that includes graphical explainations.</p>
+				</div>
+				<div class="result">
+					<img class="result-icon" src="https://img.icons8.com/?size=100&id=E7zWXk73ENql&format=png&color=FFFFFF">
+					<h3>Multiple Languages</h3>
+					<p>The language support depends on the AI you choose.<br>Choose the best AI for your language.</p>
+				</div>
+			</div>
+		</section>
+		<hr class="divider-xsmall">
+		<section style="margin:auto 3.5rem auto 3.5rem;">
+            	<div style="max-width:600px;margin:32px auto 0 auto;">
+					<div style="text-align:center;">
+						<img src="logo.png" alt="ReSplitter logo" style="width:140px; height:auto;">
+					</div>
+					<span style="display:inline-block; text-align:center; width:100%; font-size:1.1rem; color:#707070; font-weight:600; margin:1px 0 1px 0;">
+						Same result, less time, less lines.
+					</span>
+                </div>
+                <div style="margin-bottom:24px;">
+                    <div style="display:flex;justify-content:space-between;font-size:1.1rem;margin-bottom:2px;">
+                        <span>Lines</span>
+                        <div style="flex:1;"></div>
+                        <span style="font-weight:bold; font-size:1.3rem;">2,260</span>
+                    </div>
+                    <div style="background:var(--gray-line);height:10px;border-radius:5px;overflow:hidden;">
+                        <div style="width:15%;height:100%;background:#3a3;"></div>
+                    </div>
+                </div>
+                <div style="margin-bottom:24px;">
+                    <div style="display:flex;justify-content:space-between;font-size:1.1rem;margin-bottom:2px;">
+                        <span>Translate time</span>
+                        <div style="flex:1;"></div>
+                        <span style="font-weight:bold; font-size:1.3rem;">5 mins or less</span>
+                    </div>
+                    <div style="background:var(--gray-line);height:10px;border-radius:5px;overflow:hidden;">
+                        <div style="width:10%;height:100%;background:#3a3;"></div>
+                    </div>
+                </div>
+                <div style="margin-bottom:24px;">
+                    <div style="display:flex;justify-content:space-between;font-size:1.1rem;margin-bottom:2px;">
+                        <span>Translation Quality</span>
+                        <div style="flex:1;"></div>
+                        <span style="font-weight:bold; font-size:1.3rem;">Choose your AI</span>
+                    </div>
+                    <div style="background:var(--gray-line);height:10px;border-radius:5px;overflow:hidden;">
+                        <div style="width:100%;height:100%;background:#3a3;"></div>
+                    </div>
+                </div>
+                <div style="margin-bottom:10px;">
+                    <div style="display:flex;justify-content:space-between;font-size:1.1rem;margin-bottom:2px;">
+                        <span>Price</span>
+                        <div style="flex:1;"></div>
+                        <span style="font-weight:bold; font-size:1.3rem;">Free & Unlimited</span>
+                    </div>
+                    <div style="background:var(--gray-line);height:10px;border-radius:5px;overflow:hidden;">
+                        <div style="width:0%;height:100%;background:#3a3;"></div>
+                    </div>
+                </div>
+                <p style="font-size:1.2rem; font-weight:bold; display:inline-block; text-align:center; width:100%; margin:0; padding-top:35px;">Traditional Way</p>
+                <span style="display:inline-block; text-align:center; width:100%; font-size:1.1rem; color:#707070; font-weight:600; margin:1px 0 1px 0;">
+                    Having to send 38 files, 3 by 3.
+                </span>
+                <div style="margin-bottom:24px;">
+                    <div style="display:flex;justify-content:space-between;font-size:1.1rem;margin-bottom:2px;">
+                        <span>Lines</span>
+                        <div style="flex:1;"></div>
+                        <span style="font-weight:bold; font-size:1.3rem;">35,000</span>
+                    </div>
+                    <div style="background:var(--gray-line);height:10px;border-radius:5px;overflow:hidden;">
+                        <div style="width:90%;height:100%;background:#a33;"></div>
+                    </div>
+                </div>
+                <div style="margin-bottom:24px;">
+                    <div style="display:flex;justify-content:space-between;font-size:1.1rem;margin-bottom:2px;">
+                        <span>Translate time</span>
+                        <div style="flex:1;"></div>
+                        <span style="font-weight:bold; font-size:1.3rem;">1 hour or less</span>
+                    </div>
+                    <div style="background:var(--gray-line);height:10px;border-radius:5px;overflow:hidden;">
+                        <div style="width:75%;height:100%;background:#a33;"></div>
+                    </div>
+                </div>
+                <div style="margin-bottom:24px;">
+                    <div style="display:flex;justify-content:space-between;font-size:1.1rem;margin-bottom:2px;">
+                        <span>Translation Quality</span>
+                        <div style="flex:1;"></div>
+                        <span style="font-weight:bold; font-size:1.3rem;">Choose your AI</span>
+                    </div>
+                    <div style="background:var(--gray-line);height:10px;border-radius:5px;overflow:hidden;">
+                        <div style="width:100%;height:100%;background:#3a3;"></div>
+                    </div>
+                </div>
+                <div style="margin-bottom:6px;">
+                    <div style="display:flex;justify-content:space-between;font-size:1.1rem;margin-bottom:2px;">
+                        <span>Price</span>
+                        <div style="flex:1;"></div>
+                        <span style="font-weight:bold; font-size:1.3rem;">0.$$ (For 35k lines)</span>
+                    </div>
+                    <div style="background:var(--gray-line);height:10px;border-radius:5px;overflow:hidden;">
+                        <div style="width:30%;height:100%;background:#a33;"></div>
+                    </div>
+                </div>
+		</section>
+        <hr class="divider-small">
+		<section style="margin-top:5px;">
+			<div class="features">
+				<div class="feature">
+					<div class="feature-content">
+                        <img class="feature-icon" src="https://img.icons8.com/?size=100&id=jSNGQloT5wnl&format=png&color=FFFFFF" alt="Fast">
+                        <h3 style="margin: 1px 0;">Massive Replacements</h3>
+						<p>Process large volumes of data in seconds, filter preferred lines.
+                           See duplicate lines only once and translate every occurrence in the selected file or folder.
+						   in the selected file/folder.</p>
+					</div>
+					<img class="feature-img" src="files.png" alt="Feature 1 image">
+				</div>
+				<div class="feature">
+					<div class="feature-content">
+						<img class="feature-icon" src="https://img.icons8.com/?size=100&id=3720&format=png&color=FFFFFF">
+						<h3 style="margin: 1px 0;">Custom Filters</h3>
+						<p>Set your own filters with Regex to ignore lines
+							that you dont want to translate.</p>
+						<p>The default filters can reduce the visible lines to translate by up to 70%.</p>
+					</div>
+					<img class="feature-img" src="filters.png">
+				</div>
+				<div class="feature">
+					<div class="feature-content">
+						<img class="feature-icon" src="https://img.icons8.com/?size=100&id=01-y3xyRIgeM&format=png&color=000000">
+						<h3 style="margin: 1px 0;">Intuitive Interface</h3>
+						<p>Choose over 3 modes<br>Extension, Manual or API.</p>
+						<p>All the options are free to use, buy ReSplitter and have free translations forever.</p>
+					</div>
+					<img class="feature-img" src="buttons.png">
+				</div>
+			</div>
+		</section>
+		<hr class="divider-xsmall">
+		</section>
+            <div>
+			    <h2 style="text-align:center;margin-bottom:36px;">How it Works?</h2>
+                <p>1. ReSplitter filter's with Regex and assign's an ID to every line in every file/folder that you selected and save's them in cache.</p>
+                <p>2. Knowing the ID the program is able to replace all the coincidences on all the files on any subfolder/folder.</p>
+                <p>3. The user is able to directly send the prompt to an AI and translate a single server/plugin in one prompt.</p>
+                <h3>ReSplitter have's an Extension & API mode that allows you to translate for free all the ID's by parts to prevent being limited</h3>
+            </div>
+		</section>
+		<hr class="divider-xsmall">
+		<section>
+			<h2 style="text-align:center;margin-bottom:24px;">Gallery</h2>
+			<div class="gallery-images" style="display:flex;flex-direction:column;align-items:center;gap:48px;">
+				<img src="8.png" alt="Gallery Image 1" style="width:90vw;max-width:980px;min-width:240px;border-radius:18px;box-shadow:0 4px 32px #0008;object-fit:contain;">
+				<img src="6.png" alt="Gallery Image 1" style="width:90vw;max-width:980px;min-width:240px;border-radius:18px;box-shadow:0 4px 32px #0008;object-fit:contain;">
+				<img src="2.png" alt="Gallery Image 1" style="width:90vw;max-width:980px;min-width:240px;border-radius:18px;box-shadow:0 4px 32px #0008;object-fit:contain;">
+				<img src="1.png" alt="Gallery Image 2" style="width:90vw;max-width:980px;min-width:240px;border-radius:18px;box-shadow:0 4px 32px #0008;object-fit:contain;">
+				<img src="3.png" alt="Gallery Image 2" style="width:90vw;max-width:980px;min-width:240px;border-radius:18px;box-shadow:0 4px 32px #0008;object-fit:contain;">
+				<img src="4.png" alt="Gallery Image 2" style="width:90vw;max-width:980px;min-width:240px;border-radius:18px;box-shadow:0 4px 32px #0008;object-fit:contain;">
+			</div>
+		</section>
+		<hr class="divider">
+	</main>
+	<footer style="text-align:center; color:#666; padding:5px 0 5px 0; font-size:1rem;">
+		&copy; 2025 ReSplitter. All rights reserved.
+	</footer>
+</body>
+</html>
