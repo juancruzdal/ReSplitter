@@ -1,4 +1,9 @@
  # TRANSLATIONS OF THE LANGUAGE AND DIALOGUE FILES
+#LANG English to Italian
+#Time / 2:39
+#Reduction / 3104 lines to 1198
+#AI Used /google ai gemini 2.5 flash lite
+#Mode / API Key (free)
 LANGUAGE:
   separer: <gradient:blue:aqua>████████████████████████████████</gradient>
   command by player: '%tag% <red>Questo comando deve essere usato da un giocatore.'
