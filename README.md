@@ -1,7 +1,5 @@
 JSON/YAML Translator / YML Translator
 Buy: https://builtbybit.com/resources/resplitter-ai-yml-translator-bulk.73754/
-<img src="https://github.com/user-attachments/assets/7a06de2d-ec3c-4ee6-b109-dde3b7c30db3" />
-
 Translate all the files you want in one go ⭐
 Translate every YML/JSON inside every subfolder, go deeper. ⭐
 If you want translate your entire servers in one prompt ⭐
@@ -14,3 +12,4 @@ The Translation quality depends on the AI you choose
 No issues with sᴍᴀʟʟ ᴛᴇxᴛ, ReSplitter will re-format it
 Customize the prompt that you want to use
 Use free API'S or use our free custom Extension
+<img src="https://github.com/user-attachments/assets/7a06de2d-ec3c-4ee6-b109-dde3b7c30db3" />
